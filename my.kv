@@ -1,0 +1,366 @@
+<IndexWindow>:
+    name: "original"
+
+    title: title
+    logn: logn
+    getstart: getstart
+    help: help
+    about: about
+    privacy: privacy
+    terms: terms
+    image: image
+
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        Label:
+            id: title
+            font_size:55
+            bold: True
+            text: 'sustain'
+            size_hint: 1.0, 1.52
+            font_name: "Antique Olive Regular"
+        Image:
+            id: image
+            size_hint: 0.65,1.45
+            source: "C:\Users\jilli\PycharmProjects\gsfmobileapp\heartratebeepnew.png"
+
+        Image:
+            id: image
+            size_hint: 1.35,1.45
+            source: "C:\Users\jilli\PycharmProjects\gsfmobileapp\heartratebeepnew.png"
+
+        Label:
+            id: help
+            text: "Help"
+            size_hint: 0.1, 0.2
+            font_size: (root.width**2 + root.height**2) / 14**4
+
+
+        Label:
+            id: about
+            text: "About"
+            size_hint: 0.1, 0.2
+            font_size: (root.width**2 + root.height**2) / 14**4
+
+        Label:
+            id: privacy
+            text: "Privacy"
+            size_hint: 0.1, 0.2
+            font_size: (root.width**2 + root.height**2) / 14**4
+
+        Label:
+            id: terms
+            text: "Terms"
+            size_hint: 0.1, 0.2
+            font_size: (root.width**2 + root.height**2) / 14**4
+
+
+        Button:
+            id: logn
+            pos_hint:{"x":0.3,"y":0.25}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "Log In"
+            color: (1,1,1,1)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.login()
+            background_color: 0,0,0,0
+            background_normal: ""
+            canvas.before:
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
+                    ellipse: (self.x, self.y, self.width, self.height)
+                Color:
+                    rgba: (0,0,0,1) if self.state=='normal' else (0,0,1,1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+
+        Button:
+            id: getstart
+            pos_hint:{"x":0.3,"y":0.3}
+            size_hint: 0.6, 0.2
+            halign: "center"
+            valign: "middle"
+            multiline: True
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "Get Started"
+            color: (1,1,1,1)
+            bold: True
+            on_release:
+                root.manager.transition.direction = "left"
+                root.createBtn()
+            background_color: 0,0,0,0
+            background_normal: ""
+            canvas.before:
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
+                    ellipse: (self.x, self.y, self.width, self.height)
+                Color:
+                    rgba: (0,0,0,1) if self.state=='normal' else (0,0,1,1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+
+<CreateAccountWindow>:
+    name: "create"
+
+
+    namee: namee
+    email: email
+    password: passw
+
+
+    canvas.before:
+        Color:
+            rgba: 0, 0, 1, 0.3
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+            Label:
+                text: "Create an Account"
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8}
+                text: "Name: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8}
+                size_hint: 0.4, 0.12
+                id: namee
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8-0.13}
+                text: "Email: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.13}
+                size_hint: 0.4, 0.12
+                id: email
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8-0.13*2}
+                text: "Password: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.13*2}
+                size_hint: 0.4, 0.12
+                id: passw
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.25}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "Already have an Account? Log In"
+            color: (1,1,1,1)
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+            background_color: 0,0,0,0
+            background_normal: ""
+            canvas.before:
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
+                    ellipse: (self.x, self.y, self.width, self.height)
+                Color:
+                    rgba: (0,0,0,1) if self.state=='normal' else (0,0,1,1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+
+        Button:
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.15
+            text: "Submit"
+            color: (1,1,1,1)
+            font_size: (root.width**2 + root.height**2) / 14**4
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+            background_color: 0,0,0,0
+            background_normal: ""
+            canvas.before:
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
+                    ellipse: (self.x, self.y, self.width, self.height)
+                Color:
+                    rgba: (0,0,0,1) if self.state=='normal' else (0,0,1,1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+
+<LoginWindow>:
+    name: "login"
+
+
+    email: email
+    password: password
+
+    canvas.before:
+        Color:
+            rgba: 0, 0, 1, 0.3
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+
+        Label:
+            text:"e-mail"
+            pos_hint: {"top":1}
+            font_size: 60
+            halign: "center"
+            valign: "middle"
+
+        TextInput:
+            id: email
+            font_size:50
+            multiline: False
+            pos_hint: {"top":0.95}
+            size_hint: 0.75, 0.08
+            halign: "center"
+            valign: "middle"
+
+        Label:
+            text:"password"
+            font_size: 60
+            pos_hint: {"top":0.87}
+            halign: "center"
+            valign: "middle"
+
+        TextInput:
+            id: password
+            font_size: 25
+            multiline: False
+            password: True
+            pos_hint: {"top":0.8}
+            size_hint: 0.75, 0.08
+            halign: "center"
+            valign: "middle"
+
+
+        Button:
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.2
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Log In"
+            color: (1,1,1,1)
+            bold: True
+            font_size: (root.width**2 + root.height**2) / 13**4
+            on_release:
+                root.manager.transition.direction = "up"
+                root.loginBtn()
+            background_color: 0,0,0,0
+            background_normal: ""
+            canvas.before:
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
+                    ellipse: (self.x, self.y, self.width, self.height)
+                Color:
+                    rgba: (0,0,0,1) if self.state=='normal' else (0,0,1,1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+
+
+
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.3}
+            size_hint: 0.6, 0.2
+            halign: "center"
+            valign: "middle"
+            multiline: True
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "Don't have an Account? \n Get Started"
+            color: (1,1,1,1)
+            bold: True
+            on_release:
+                root.manager.transition.direction = "right"
+                root.createBtn()
+            background_color: 0,0,0,0
+            background_normal: ""
+            canvas.before:
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
+                    ellipse: (self.x, self.y, self.width, self.height)
+                Color:
+                    rgba: (0,0,0,1) if self.state=='normal' else (0,0,1,1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+
+
+<MainWindow>:
+
+
+    n: n
+    email: email
+    created:created
+
+    FloatLayout:
+        Label:
+            id: n
+            pos_hint:{"x": 0.1, "top":0.9}
+            size_hint:0.8, 0.2
+            text: "Account Name: "
+
+        Label:
+            id: email
+            pos_hint:{"x": 0.1, "top":0.7}
+            size_hint:0.8, 0.2
+            text: "Email: "
+
+        Label:
+            id: created
+            pos_hint:{"x": 0.1, "top":0.5}
+            size_hint:0.8, 0.2
+            text: "Created: "
+
+        Button:
+            pos_hint:{"x":0.2, "y": 0.1}
+            size_hint:0.6,0.2
+            text: "Log Out"
+            on_release:
+                app.root.current = "original"
+                root.manager.transition.direction = "down"
